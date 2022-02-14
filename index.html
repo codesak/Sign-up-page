@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style1.css" />
+    
+
+    <title>Signup page</title>
+  </head>
+  <body>
+    
+
+    
+
+
+    <div class="container">
+      <div class="title">
+        <h1>Sign Up</h1>
+      </div>
+
+      <div class="form">
+        <form action="" onsubmit="return validateForm()">
+          <h2>Username</h2>
+          <input type="text" placeholder="Username" id="username" />
+          <p id="userError" class="error"></p>
+          <h2>Email</h2>
+          <input type="text" placeholder="xyz@gmail.com" id="email" />
+          <p id="emailError" class="error"></p>
+          <h2>Password</h2>
+          <input type="text" placeholder="Password" id="password" />
+          <p id="passError" class="error"></p>
+          <input type="checkbox" name="terms" id="myCheck" /> I Agree Terms &
+          Conditions
+          <p id="check" class="error"></p>
+          <button id="button">Sign Up</button>
+        </form>
+      </div>
+
+      <p style="text-align: center">OR</p>
+      <p style="text-align: center">
+        Do you have an account? <a href="#" style="color: aqua">Sign In</a>
+      </p>
+    </div>
+    <script>
+      
+
+      let username = document.getElementById("username");
+      let password = document.getElementById("password");
+      let email = document.getElementById("email");
+      var checkBox = document.getElementById("myCheck");
+      var text = document.getElementById("text");
+
+      var regularExpression = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+      let flag = 1;
+
+      function validateForm() {
+        if (checkBox.checked == true) {
+          flag = 1;
+        } else {
+          document.getElementById("check").innerHTML =
+            "Please agree to terms & conditions";
+          flag = 0;
+        }
+
+        if (username.value == "") {
+          document.getElementById("userError").innerHTML = "Username is empty";
+          flag = 0;
+        } else if (username.value.length < 6) {
+          document.getElementById("userError").innerHTML =
+            "Username require min 6 character";
+          flag = 0;
+        } else {
+          document.getElementById("userError").innerHTML = "";
+          flag = 1;
+        }
+
+        if (email.value == "") {
+          document.getElementById("emailError").innerHTML =
+            "Email not be empty";
+        } else {
+          document.getElementById("emailError").innerHTML = "";
+          flag = 1;
+        }
+
+        if (password.value == "") {
+          document.getElementById("passError").innerHTML = "Password is empty";
+          flag = 0;
+        } else if (password.value.length < 8) {
+          document.getElementById("passError").innerHTML =
+            "Password require min 8 character";
+          flag = 0;
+        } else {
+          document.getElementById("passError").innerHTML = "";
+          flag = 1;
+        }
+        if (flag) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>
